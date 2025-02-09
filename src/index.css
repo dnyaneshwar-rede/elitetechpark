@@ -1,0 +1,126 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  /* Light theme variables */
+  :root {
+    --background: 30 20% 98%;
+    --foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    
+    /* Toast colors */
+    --toast-background: 0 0% 100%;
+    --toast-foreground: 222.2 47.4% 11.2%;
+    --toast-border: 214.3 31.8% 91.4%;
+    --toast-success: 142.1 76.2% 36.3%;
+    --toast-error: 346.8 77.2% 49.8%;
+    --toast-warning: 48 96% 53%;
+  }
+
+  /* Dark theme variables */
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    
+    /* Dark theme toast colors */
+    --toast-background: 240 10% 3.9%;
+    --toast-foreground: 0 0% 98%;
+    --toast-border: 240 3.7% 15.9%;
+    --toast-success: 142.1 70.6% 45.3%;
+    --toast-error: 346.8 77.2% 49.8%;
+    --toast-warning: 48 96% 53%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans transition-colors duration-300;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/80 dark:bg-black/20 backdrop-blur-sm;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent;
+  }
+
+  /* Enhanced toast styles with dark mode support */
+  .toast-success {
+    @apply bg-[#F0FDF4] dark:bg-[#022c1a] border-[#86EFAC] text-[#166534] dark:text-[#86EFAC];
+  }
+
+  .toast-error {
+    @apply bg-[#FEF2F2] dark:bg-[#2c0a0a] border-[#FECACA] text-[#991B1B] dark:text-[#FECACA];
+  }
+
+  .toast-warning {
+    @apply bg-[#FFFBEB] dark:bg-[#2c1810] border-[#FEF3C7] text-[#92400E] dark:text-[#FEF3C7];
+  }
+
+  .toast-default {
+    @apply bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100;
+  }
+
+  .toast {
+    @apply animate-fade-in rounded-lg shadow-lg border px-6 py-4;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.5s ease-out forwards;
+  }
+
+  .animate-fade-down {
+    animation: fade-down 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+}
